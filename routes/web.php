@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Instructor\InstructorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,17 +20,33 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get("/dashboard", DashboardController::class)->middleware('auth')->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('dashboard', 'index')->name('admin.dashboard');
+        Route::get("logout", 'logout')->name("admin.logout");
+    });
+    Route::controller(AdminProfileController::class)->group(function(){
+        Route::get('profile', 'index')->name('admin.profile');
+    });
 });
 
-require __DIR__.'/auth.php';
+
+Route::middleware(['auth', 'role:instructor'])->group(function () {
+    Route::prefix('instructor')->controller(InstructorController::class)->group(function () {
+        Route::get('dashboard', 'index')->name('instructor.dashboard');
+        
+    });
+});
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::prefix('user')->controller(UserController::class)->group(function () {
+        Route::get('dashboard', 'index')->name('user.dashboard');
+    });
+});
+
+
+require __DIR__ . '/auth.php';
