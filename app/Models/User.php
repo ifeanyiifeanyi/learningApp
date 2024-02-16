@@ -19,6 +19,17 @@ class User extends Authenticatable
      */
     protected  $guarded = [];
 
+    public function getPhotoUrlAttribute()
+    {
+        // Check if the user has a photo
+        if ($this->photo) {
+            return asset($this->photo);
+        } else {
+            // If no photo exists, return the URL of the default image
+            return asset('no_image.jpg'); 
+        }
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

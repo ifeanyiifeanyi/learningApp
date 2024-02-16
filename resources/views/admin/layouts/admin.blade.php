@@ -197,6 +197,8 @@
 			</div>
 		</div>
 	</div>
+
+	
 	<!--end switcher-->
 	<!--plugins-->
 	<script src="{{ asset("") }}assets/js/jquery.min.js"></script>
@@ -217,6 +219,10 @@
 	<script src="{{ asset("") }}assets/js/index3.js"></script>
 	<!--app JS-->
 	<script src="{{ asset("") }}assets/js/app.js"></script>
+
+	<!-- moment timezone cdn links  -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.45/moment-timezone.min.js"></script>
     @yield('js')
 </body>
 
