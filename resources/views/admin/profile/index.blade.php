@@ -37,7 +37,7 @@
                                         <h4>{{ Str::title($user->name)}} ({{ $user->username }})</h4>
                                         <p class="mb-1 text-secondary">{{ $user->address ?? 'N/A' }}</p>
                                         <p class="text-muted font-size-sm">{{ Str::lower($user->email) }}</p>
-                                        <button class="btn btn-primary">Update Password</button>
+                                        <a href="{{ route('admin.updatePassword.view') }}" class="btn btn-primary">Update Password</a>
                                         <button class="btn btn-outline-primary">Message</button>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.profile.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card">
                                 <div class="card-body">
@@ -141,19 +141,19 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input name="photo" type="file" class="form-control"
-                                                value="" />
+                                                value="" onchange="previewImageFunction(this)" />
                                             @error('photo')
                                             <span class="text-danger">{{ $message }}</span>   
                                             @enderror
                                         </div>
                                         <div class="col-sm-4">
-                                            <img src="{{ $user->getPhotoUrlAttribute() }}" alt="profile photo" class="img-responsive w-50">
+                                            <img id="previewImage" src="{{ $user->getPhotoUrlAttribute() }}" alt="profile photo" class="img-responsive w-50">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-3"></div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="button" class="px-4 btn btn-primary" value="Save Changes" />
+                                            <input type="submit" class="px-4 btn btn-primary" value="Save Changes" />
                                         </div>
                                     </div>
                                 </div>
@@ -169,5 +169,16 @@
 
 
 @section('js')
-
+<script>
+    function previewImageFunction(input) {
+        var preview = document.getElementById('previewImage');
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @endsection

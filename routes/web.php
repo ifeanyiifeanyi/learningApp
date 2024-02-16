@@ -32,6 +32,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     });
     Route::controller(AdminProfileController::class)->group(function(){
         Route::get('profile', 'index')->name('admin.profile');
+        Route::post('profile/store', 'store')->name('admin.profile.store');
+        Route::get('profile/update-password', 'upDatePasswordView')->name('admin.updatePassword.view');
     });
 });
 
