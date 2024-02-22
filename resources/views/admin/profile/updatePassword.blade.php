@@ -28,14 +28,25 @@
             <div class="main-body">
                 <div class="row">
                     
-                    <div class="mx-auto col-lg-8 mt-5">
-                        <form action="{{ route('admin.profile.store') }}" method="post" enctype="multipart/form-data">
+                    <div class="mx-auto mt-5 col-lg-8">
+                        <form action="{{ route('admin.updatePassword.post') }}" method="post">
                             @csrf
                             <div class="card">
                                 <div class="card-body">
                                     <div class="mb-3 row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Current Password</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input name="current_password" type="password" class="form-control" value="" />
+                                            @error('current_password')
+                                             <span class="text-danger">{{ $message }}</span>   
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">New Password</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input name="password" type="password" class="form-control" value="" />
@@ -46,22 +57,11 @@
                                     </div>
                                     <div class="mb-3 row">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">New Password</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input name="new_password" type="password" class="form-control" value="" />
-                                            @error('new_password')
-                                             <span class="text-danger">{{ $message }}</span>   
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <div class="col-sm-3">
                                             <h6 class="mb-0">Confirm New Password</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input name="confirm_new_password" type="password" class="form-control" value="" />
-                                            @error('confirm_new_password')
+                                            <input name="password_confirmation" type="password" class="form-control" value="" />
+                                            @error('password_confirmation')
                                              <span class="text-danger">{{ $message }}</span>   
                                             @enderror
                                         </div>

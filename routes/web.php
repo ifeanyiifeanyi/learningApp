@@ -34,6 +34,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('profile', 'index')->name('admin.profile');
         Route::post('profile/store', 'store')->name('admin.profile.store');
         Route::get('profile/update-password', 'upDatePasswordView')->name('admin.updatePassword.view');
+        Route::post('profile/update-password', 'updatePasswordStore')->name('admin.updatePassword.post');
     });
 });
 

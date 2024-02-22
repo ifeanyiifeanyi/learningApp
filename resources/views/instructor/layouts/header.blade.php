@@ -16,6 +16,28 @@
                         <a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
                         </a>
                     </li>
+                    <li class="nav-item dropdown dropdown-laungauge d-none d-sm-flex">
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown"><img src="assets/images/county/02.png" width="22" alt="">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="py-2 dropdown-item d-flex align-items-center" href="javascript:;"><img src="assets/images/county/01.png" width="20" alt=""><span class="ms-2">English</span></a>
+                            </li>
+                            <li><a class="py-2 dropdown-item d-flex align-items-center" href="javascript:;"><img src="assets/images/county/02.png" width="20" alt=""><span class="ms-2">Catalan</span></a>
+                            </li>
+                            <li><a class="py-2 dropdown-item d-flex align-items-center" href="javascript:;"><img src="assets/images/county/03.png" width="20" alt=""><span class="ms-2">French</span></a>
+                            </li>
+                            <li><a class="py-2 dropdown-item d-flex align-items-center" href="javascript:;"><img src="assets/images/county/04.png" width="20" alt=""><span class="ms-2">Belize</span></a>
+                            </li>
+                            <li><a class="py-2 dropdown-item d-flex align-items-center" href="javascript:;"><img src="assets/images/county/05.png" width="20" alt=""><span class="ms-2">Colombia</span></a>
+                            </li>
+                            <li><a class="py-2 dropdown-item d-flex align-items-center" href="javascript:;"><img src="assets/images/county/06.png" width="20" alt=""><span class="ms-2">Spanish</span></a>
+                            </li>
+                            <li><a class="py-2 dropdown-item d-flex align-items-center" href="javascript:;"><img src="assets/images/county/07.png" width="20" alt=""><span class="ms-2">Georgian</span></a>
+                            </li>
+                            <li><a class="py-2 dropdown-item d-flex align-items-center" href="javascript:;"><img src="assets/images/county/08.png" width="20" alt=""><span class="ms-2">Hindi</span></a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item dark-mode d-none d-sm-flex">
                         <a class="nav-link dark-mode-icon" href="javascript:;"><i class='bx bx-moon'></i>
                         </a>
@@ -564,17 +586,16 @@
             </div>
             <div class="px-3 user-box dropdown">
                 <a class="gap-3 d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img 
-                    src="{{ Auth::user()->photo ? asset(Auth::user()->photo) : asset('no_image.jpg') }}" class="user-img" alt="user avatar">
+                    <img src="assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
                     <div class="user-info">
-                        <p class="mb-0 user-name">{{ Auth::user()->name }}</p>
-                        <p class="mb-0 designattion">{{ Auth::user()->role}}</p>
+                        <p class="mb-0 user-name">Pauline Seitz</p>
+                        <p class="mb-0 designattion">Web Designer</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.profile') }}"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
+                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.updatePassword.view') }}"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
+                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
                     </li>
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
                     </li>
@@ -585,7 +606,7 @@
                     <li>
                         <div class="mb-0 dropdown-divider"></div>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.logout') }}"><i class="bx bx-log-out-circle"></i><span>Logout</span></a>
+                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-log-out-circle"></i><span>Logout</span></a>
                     </li>
                 </ul>
             </div>

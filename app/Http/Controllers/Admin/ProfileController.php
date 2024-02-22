@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 class ProfileController extends Controller
 {
@@ -73,19 +75,23 @@ class ProfileController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updatePasswordStore(Request $request)
     {
-        //
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'confirmed'],
+        ]);
+
+        $user = User::find(Auth::user()->id);
+        $user->password = Hash::make($request->password);
+        $user->save();
+        $notification = [
+            'message' => 'Password Details Updated!',
+            'alert-type' => 'success'
+        ];
+        return redirect()->route('admin.profile')->with($notification);
     }
 
     /**
