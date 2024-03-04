@@ -586,16 +586,16 @@
             </div>
             <div class="px-3 user-box dropdown">
                 <a class="gap-3 d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
+                    <img src="{{ auth()->user()->photo ? asset(auth()->user()->photo) : asset('no_image.jpg') }}" class="user-img" alt="user avatar">
                     <div class="user-info">
-                        <p class="mb-0 user-name">Pauline Seitz</p>
-                        <p class="mb-0 designattion">Web Designer</p>
+                        <p class="mb-0 user-name">{{ Str::title(auth()->user()->name) }}</p>
+                        <p class="mb-0 designattion">{{ Str::title(auth()->user()->role) }}</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('instructor.profile.view') }}"><i class="bx bx-user fs-5"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('instructor.updatePassword.view') }}"><i class="bx bx-cog fs-5"></i><span>Settings</span></a>
                     </li>
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
                     </li>
@@ -606,7 +606,7 @@
                     <li>
                         <div class="mb-0 dropdown-divider"></div>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i class="bx bx-log-out-circle"></i><span>Logout</span></a>
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('instructor.logout') }}"><i class="bx bx-log-out-circle"></i><span>Logout</span></a>
                     </li>
                 </ul>
             </div>
